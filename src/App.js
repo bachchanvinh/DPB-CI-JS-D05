@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showlist: []
+      showlist: showdefau()
     }
     this.showList = this.showList.bind(this)
   }
@@ -18,11 +18,7 @@ class App extends React.Component {
     Enterinput(e)
     let list = []
     if (res.length === 0) {
-      for (let i = 0; i < 20; i++) {
-        list.push(
-          <Emojilist symbol={emojis.default[i].symbol} title={emojis.default[i].title} />
-        )
-      }
+      list = showdefau()
     }
     else {
       let length = res.length
@@ -33,11 +29,11 @@ class App extends React.Component {
           <Emojilist symbol={emojis.default[res[i]].symbol} title={emojis.default[res[i]].title} />
         )
       }
-      console.log(list)
+      // console.log(list)
     }
 
     this.setState({ showlist: list })
-    console.log(this.state.showlist)
+    // console.log(this.state.showlist)
     return this.state.showlist
   }
   render() {
@@ -45,7 +41,8 @@ class App extends React.Component {
       <div className="App" >
         <Header />
         <Searchinput aFunction={this.showList} />
-        {this.state.showlist}
+        <div className="Emoji">{this.state.showlist}
+        </div>
       </div>
     );
   }
@@ -57,7 +54,9 @@ function Enterinput(e) {
   res = []
   let arrcheck = []
   for (let i = 0; i < data.length; i++) {
+
     arrcheck = data[i].keywords.split(' ');
+    // console.log(arrcheck)
     for (let j = 0; j < arrcheck.length; j++) {
       if (arrcheck[j] === value && value !== '') {
         res.push(i)
@@ -66,8 +65,17 @@ function Enterinput(e) {
       }
     }
   }
-  console.log(res, 2)
+  // console.log(res, 2)
 
 }
-console.log(App.render)
 export default App;
+function showdefau() {
+  let list = []
+  for (let i = 0; i < 20; i++) {
+    list.push(
+      <Emojilist symbol={emojis.default[i].symbol} title={emojis.default[i].title} />
+    )
+  }
+  return list
+}
+

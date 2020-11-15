@@ -1,0 +1,10 @@
+h1{
+    color: gray;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    border: black solid thin;
+    border-radius: 5pt ;
+    background-color: honeydew;
+}

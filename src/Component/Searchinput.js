@@ -1,8 +1,8 @@
 import React from 'react'
-
+import '../CSS/Input.css'
 function Searchinput(props) {
     return (
-        <div>
+        <div className="Search">
             <input type="text" placeholder="What's emoji" onChange={props.aFunction}  />
         </div>)
 }

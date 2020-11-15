@@ -1,0 +1,10 @@
+.Search{
+    display: flex;
+    justify-content: center;
+    margin: 5pt 0;
+}
+
+.Search input{
+    width: 700px;
+    height: 22pt;
+}
