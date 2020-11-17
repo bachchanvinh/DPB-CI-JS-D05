@@ -1,42 +1,25 @@
-import React from 'react'
-import { Header } from './Components/Header'
-import { Inputtodo } from './Components/Inputtodo'
-import { Todolist } from './Components/Todolist'
+import logo from './logo.svg';
 import './App.css';
 
-let dataReact = [<Todolist todo={'test'} />]
-let arrTodo = []
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      todoList: this.showTodo()
-    }
-    this.addTodo = this.addTodo.bind(this)
-  }
-  showTodo() {
-    arrTodo = dataReact.map(x => <Todolist todo={x} />)
-    return arrTodo
-  }
-  addTodo(e) {
-    let value = e.target.value
-    if (e.key === 'Enter') {
-      dataReact.push(<Todolist todo={value} />)
-      this.setState({ todoList: this.showTodo() })
-    }
-
-  }
-  render() {
-    return (
-      <div className="Apptodo">
-        <Header />
-        <Inputtodo Enter={this.addTodo} />
-        <ul>
-          {this.state.todoList}
-        </ul>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
