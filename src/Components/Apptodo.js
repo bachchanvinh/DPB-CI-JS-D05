@@ -9,19 +9,20 @@ class Apptodo extends React.Component {
     this.state = {
       todoList: this.props.datauser
     };
-    this.show = this.show.bind(this)
+    this.addtodo=this.addtodo.bind(this)
   }
-  show() {
-    this.setState({ todoList: this.props.datauser })
-    let arr = this.state.todoList
-    return arr
+  addtodo(e){
+    // if(e.nativeEvent.data=="Enter"){
+    this.setState({todoList:this.props.datauser})
+    console.log(this.state.todoList)
+    
   }
   render() {
     return (
 
       <div className="Todo">
         <Header />
-        <Inputtodo Enter={this.props.Enter} />
+        <Inputtodo Enter={this.props.Enter} Change={this.addtodo} />
         {this.state.todoList}
       </div>
     );

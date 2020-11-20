@@ -22,8 +22,8 @@ class App extends React.Component {
       }
     }
     this.Signin = this.Signin.bind(this)
-    this.showTodo=this.showTodo.bind(this)
-    this.addTodo=this.addTodo.bind(this)
+    this.showTodo = this.showTodo.bind(this)
+    this.addTodo = this.addTodo.bind(this)
   }
   Signin(e) {
     let uname = e.target.parentElement.parentElement.children[2].value
@@ -34,18 +34,18 @@ class App extends React.Component {
     else this.setState({ display: { Apptodo: true } })
   }
   showTodo(array) {
-    let arrTodo=[]
+    let arrTodo = []
     arrTodo = array.map(x => <Todolist todo={x} />)
     return arrTodo
   }
-  
+
   addTodo(e) {
     let value = e.target.value
     if (e.key === 'Enter') {
-      datauser.todo=[...this.state.user.todo,value]
-      // console.log(this.state.user.todo)
-      this.setState({user:datauser})
-      this.showTodo( datauser.todo)
+      datauser.todo = [...this.state.user.todo, value]
+      console.log(this.state.user.todo)
+      this.setState({ user: datauser })
+      this.showTodo(datauser.todo)
     }
   }
   render() {
