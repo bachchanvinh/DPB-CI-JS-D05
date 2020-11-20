@@ -1,6 +1,5 @@
 export function Todolist (props){
     return(
-
-            <li >{props.todo}</li>
+            <p>{props.todo}</p>
     )
 }
