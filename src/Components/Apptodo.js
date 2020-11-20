@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header } from './Todo/Header'
 import { Inputtodo } from './Todo/Inputtodo'
-
+import '../Asset/Css/Todoapp.css'
 
 export function Apptodo (props) {
   // constructor(props) {

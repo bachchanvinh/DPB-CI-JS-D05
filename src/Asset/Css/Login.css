@@ -1,0 +1,41 @@
+.login {
+    border-radius: 3pt;
+    border: black thin solid;
+    padding: 20pt 12pt;
+    box-shadow:  3px 10px 10px rgb(177, 177, 177);
+}
+h1 {
+    margin-bottom: 12pt;
+}
+p {
+    margin: 6pt 0 3pt 0
+}
+.login >input {
+    width: 215px;
+}
+.login .Error {
+    font-size: 8pt;
+    color: red;
+    font-weight: bolder;
+}
+.login div {
+    display: flex;
+    justify-content: center;
+}
+.login div input {
+    border:thin gray solid;
+    border-radius: 1pt;
+    margin-top: 8pt;
+    width: 219px;
+    font-weight: bold;
+}
+.login div input:hover {
+    border:thin gray solid;
+    border-radius: 1pt;
+    margin-top: 8pt;
+    width: 219px;
+    background-color: rgb(194, 194, 194);
+    box-shadow:  1px 1px 1px rgb(177, 177, 177);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}

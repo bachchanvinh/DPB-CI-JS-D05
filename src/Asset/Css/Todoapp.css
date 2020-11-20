@@ -1,0 +1,57 @@
+.todoApp {
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+    border:  black thin solid;
+}
+.todoApp .Todo {
+    margin: 10pt;
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+}
+.todoApp .Todo h1 {
+    font-weight: bolder;
+}
+.todoApp .Todo input {
+    width: 250px;
+}
+.Todolist p {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14pt;
+    padding-left: 5pt;
+}
+.Todolist span {
+    width: 200px;
+}
+.Todolist p:hover {
+    background-color: rgb(250, 250, 250);
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14pt;
+    padding-left: 5pt;
+}
+
+.Todolist button{
+    width: 20pt;
+    height: 16pt;
+    border-radius: 20%;
+    border: solid thin gray;
+    margin-right: 8pt;
+    font-weight: bold;
+}
+.Todolist button:hover{
+    width: 20pt;
+    height: 16pt;
+    border:thin gray solid;
+    border-radius: 1pt;
+    background-color: rgb(194, 194, 194);
+    box-shadow:  1px 1px 1px rgb(177, 177, 177);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}

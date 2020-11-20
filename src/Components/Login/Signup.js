@@ -1,4 +1,4 @@
-
+import '../../Asset/Css/Signup.css'
 export function Signup(props){
         return (
             <div className="Signup">

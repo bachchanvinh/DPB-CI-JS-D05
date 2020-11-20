@@ -1,8 +1,9 @@
 import React from 'react'
+import './Asset/Css/AppandMenu.css'
 import firebase from "firebase/app";//firebase
 import "firebase/auth";//firebase
 import "firebase/firestore";//firebase
-import {firebaseConfig} from './Components/Res/firebase.config'//firebase
+import { firebaseConfig } from './Components/Res/firebase.config'//firebase
 import './App.css';
 import { Apptodo } from './Components/Apptodo'
 import { Login } from './Components/Login/Login'
@@ -12,7 +13,7 @@ firebase.initializeApp(firebaseConfig);//firebase
 const db = firebase.firestore();//firebase
 
 let datauser = []
-let idseveruser=[]
+let idseveruser = []
 let index = 0
 class App extends React.Component {
   constructor(props) {
@@ -32,28 +33,29 @@ class App extends React.Component {
     this.Signin = this.Signin.bind(this)
     this.Signup = this.Signup.bind(this)
     this.Logout = this.Logout.bind(this)
+    this.Save = this.Save.bind(this)
     this.showTodo = this.showTodo.bind(this)
     this.addTodo = this.addTodo.bind(this)
     this.removeTodo = this.removeTodo.bind(this)
 
   }
-  componentDidMount(){
+  componentDidMount() {
 
     db.collection("users")
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            datauser.push( doc.data());
-            idseveruser.push(doc.id)
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          datauser.push(doc.data());
+          idseveruser.push(doc.id)
         });
-    })
-    .catch(function(error) {
+      })
+      .catch(function (error) {
         console.log("Error getting documents: ", error);
-    });
+      });
   }
   sWitch(e) {
-    this.setState({ display: { Login: !this.state.display.Login, Signup: !this.state.display.Signup } })
+    this.setState({ display: { Login: !this.state.display.Login, Signup: !this.state.display.Signup }, error: { sign: "" } })
     this.state.display.Login === true ? e.target.innerText = "Log in" : e.target.innerText = "Sign up"
   }
   Signup(e) {
@@ -61,9 +63,11 @@ class App extends React.Component {
     let upass = e.target.parentElement.parentElement.children[4].value
     let check = true
     for (let i = 0; i < datauser.length; i++) {
-      if (uname === datauser[i].id) {
+      console.log(datauser[i])
+      if (uname === datauser[i].id||uname==="") {
+        console.log("haha")
         check = false
-        this.setState({ error: { sign: "Username has been use" } })
+        this.setState({ error: { sign: "Username can't be used" } })
       }
     }
     if (check) {
@@ -77,17 +81,18 @@ class App extends React.Component {
         user: datauser, display: { Login: true },
         error: { sign: "" }
       })
-    //       db.collection("users").add({
-    //   id: uname,
-    //   pass: upass,
-    //   todo: []
-    // })
-    // .then(function(docRef) {
-    //   console.log("Document written with ID: ", docRef.id);
-    // })
-    // .catch(function(error) {
-    //   console.error("Error adding document: ", error);
-    // });
+      db.collection("users").add({
+        id: uname,
+        pass: upass,
+        todo: []
+      })
+        .then(function (docRef) {
+          idseveruser.push(docRef.id)
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+          console.error("Error adding document: ", error);
+        });
     }
   }
   Signin(e) {
@@ -106,14 +111,32 @@ class App extends React.Component {
     }
   }
   Logout() {
+
     this.setState({ display: { Apptodo: false, Login: true, Signup: false } })
     // To update age and favorite color:
     db.collection("users").doc(idseveruser[index]).update({
-        "todo":this.state.user[index].todo
+      "todo": this.state.user[index].todo
     })
-    .then(function() {
+      .then(function () {
         console.log("Document successfully updated!");
-    });
+      });
+  }
+  Save(e){
+    // .children[0].innerText)
+    let middle = e.target.parentElement.parentElement.children[1].children[1].children
+    let datasave= []
+    for(let i=0;i<middle.length;i++){
+      datasave.push(middle[i].children[0].innerText)
+    }
+    console.log(datauser[index].todo)
+    datauser[index].todo = datasave
+    this.setState({user:datauser})
+    db.collection("users").doc(idseveruser[index]).update({
+      "todo": this.state.user[index].todo
+    })
+      .then(function () {
+        console.log("Document successfully updated!");
+      });
   }
   showTodo(array) {
     let arrTodo = []
@@ -139,13 +162,20 @@ class App extends React.Component {
   render() {
     return (
       <div className="Apptodo">
-        {!this.state.display.Apptodo && <button onClick={this.sWitch}>Log in</button>}
-        {this.state.display.Apptodo && <button onClick={this.Logout}>Log out</button>}
+        <div className="Menubar">
+          {!this.state.display.Apptodo && <button onClick={this.sWitch}>Sign in</button>}
+          {this.state.display.Apptodo && <button onClick={this.Save}>Save</button>}
+          {this.state.display.Apptodo && <button onClick={this.Logout}>Log out</button>}
+        </div>
         {this.state.display.Signup && <Signup Clickin={this.Signup} tellerror={this.state.error.sign} />}
         {this.state.display.Login && <Login tellerror={this.state.error.sign} Clickin={this.Signin} />}
-        {this.state.display.Apptodo && <Apptodo Enter={this.addTodo} />}
-        {this.state.display.Apptodo && this.showTodo(this.state.user[index].todo)}
-
+       {this.state.display.Apptodo && <div className="todoApp">
+           <Apptodo Enter={this.addTodo} />
+          <div className="Todolist">
+          { this.showTodo(this.state.user[index].todo) }
+          
+          </div>
+        </div>}
       </div>
     );
   }
