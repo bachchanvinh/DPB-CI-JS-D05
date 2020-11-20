@@ -1,5 +1,5 @@
 export function Todolist (props){
     return(
-            <p>{props.todo}</p>
+            <p className={props.className}>{props.todo} <button onClick={props.onClickX}>X</button></p>
     )
 }
