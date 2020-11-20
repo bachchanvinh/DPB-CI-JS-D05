@@ -3,30 +3,29 @@ import { Header } from './Todo/Header'
 import { Inputtodo } from './Todo/Inputtodo'
 
 
-class Apptodo extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      todoList: this.props.datauser
-    };
-    this.addtodo=this.addtodo.bind(this)
-  }
-  addtodo(e){
-    // if(e.nativeEvent.data=="Enter"){
-    this.setState({todoList:this.props.datauser})
-    console.log(this.state.todoList)
-    
-  }
-  render() {
+export function Apptodo (props) {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //   };
+  //   // this.show = this.show.bind(this)
+  // }
+  // show(e) {
+  //   if(e.key==="Enter"){
+  //    this.setState({ todoList: this.props.datauser })
+  //   let arr = this.state.todoList
+  //   return arr
+  //   }
+  // }
     return (
 
       <div className="Todo">
         <Header />
-        <Inputtodo Enter={this.props.Enter} Change={this.addtodo} />
-        {this.state.todoList}
+        <Inputtodo Enter={props.Enter} />
+        {/* {this.state.todoList} */}
       </div>
     );
-  }
+  
 }
 
-export default Apptodo;
+ 
