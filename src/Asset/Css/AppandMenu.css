@@ -6,17 +6,33 @@
 .Apptodo .Menubar{
     display: flex;
     width: 100%;
-   justify-content: flex-end;
+   justify-content: space-between;
+   align-items: center;
    padding: 5pt 0;
     margin-bottom:39pt;
+    height: 80px;
    border:  rgb(163, 163, 163) thin solid;
    background-color: rgb(247, 247, 247);
 }
+.Apptodo .Menubar .Blankheader{
+width: 160px;
+}
+.Apptodo .Menubar h1 {
+    margin: 0pt;
+    font-weight: bolder;
+}
+.Apptodo .Menubar .threebut{
+   width: 160px;
+}
 .Apptodo .Menubar button{
+    margin-top:5pt;
+    font-weight: bold;
     padding: 2pt;
     width: 80px;
     margin-right: 30pt;
     border-radius: 3pt;
+    border:thin solid;
+    box-shadow: 1px 1px 1px gray;
 }
 .Apptodo .Menubar button:hover{
     background: rgb(221, 221, 221);
@@ -25,7 +41,7 @@
     margin-right: 30pt;
     border-radius: 3pt;
     background-color: rgb(194, 194, 194);
-    box-shadow:  1px 1px 1px rgb(177, 177, 177);
+    box-shadow:  1px 2px 3px rgb(177, 177, 177);
     color: rgb(255, 255, 255);
     font-weight: bolder;
 }

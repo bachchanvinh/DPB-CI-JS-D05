@@ -63,9 +63,7 @@ class App extends React.Component {
     let upass = e.target.parentElement.parentElement.children[4].value
     let check = true
     for (let i = 0; i < datauser.length; i++) {
-      console.log(datauser[i])
-      if (uname === datauser[i].id||uname==="") {
-        console.log("haha")
+      if (uname === datauser[i].id || uname === "") {
         check = false
         this.setState({ error: { sign: "Username can't be used" } })
       }
@@ -78,7 +76,8 @@ class App extends React.Component {
       }
       datauser.push(newUser)
       this.setState({
-        user: datauser, display: { Login: true },
+        user: datauser,
+        display: { Login: true },
         error: { sign: "" }
       })
       db.collection("users").add({
@@ -104,14 +103,13 @@ class App extends React.Component {
           display: { Apptodo: true },
           error: { sign: "" }
         })
-        console.log(this.state.user)
         index = i
+        break
       }
-      else this.setState({ error: { sign: "Username or Pass wrong" } })
+      else { this.setState({ error: { sign: "Username or Pass wrong" } }) }
     }
   }
   Logout() {
-
     this.setState({ display: { Apptodo: false, Login: true, Signup: false } })
     // To update age and favorite color:
     db.collection("users").doc(idseveruser[index]).update({
@@ -121,16 +119,15 @@ class App extends React.Component {
         console.log("Document successfully updated!");
       });
   }
-  Save(e){
+  Save(e) {
     // .children[0].innerText)
     let middle = e.target.parentElement.parentElement.children[1].children[1].children
-    let datasave= []
-    for(let i=0;i<middle.length;i++){
+    let datasave = []
+    for (let i = 0; i < middle.length; i++) {
       datasave.push(middle[i].children[0].innerText)
     }
-    console.log(datauser[index].todo)
     datauser[index].todo = datasave
-    this.setState({user:datauser})
+    this.setState({ user: datauser })
     db.collection("users").doc(idseveruser[index]).update({
       "todo": this.state.user[index].todo
     })
@@ -147,7 +144,6 @@ class App extends React.Component {
     let value = e.target.value
     if (e.key === 'Enter') {
       datauser[index].todo = [...this.state.user[index].todo, value]
-      console.log(this.state.user[index].todo)
       this.setState({ user: datauser })
       // this.showTodo(datauser[index].todo)
       e.target.value = ""
@@ -157,23 +153,26 @@ class App extends React.Component {
     datauser[index].todo.splice(Number(e.target.parentElement.className), 1)
     this.setState({ user: datauser })
     this.showTodo(datauser[index].todo)
-    console.log(this.state.user[index].todo)
   }
   render() {
     return (
       <div className="Apptodo">
         <div className="Menubar">
-          {!this.state.display.Apptodo && <button onClick={this.sWitch}>Sign in</button>}
-          {this.state.display.Apptodo && <button onClick={this.Save}>Save</button>}
-          {this.state.display.Apptodo && <button onClick={this.Logout}>Log out</button>}
+          <div className="Blankheader"></div>
+          <h1>This is Todo App</h1>
+          <div className="threebut">
+            {!this.state.display.Apptodo && <button onClick={this.sWitch}>Sign up</button>}
+            {this.state.display.Apptodo && <button onClick={this.Save}>Save</button>}
+            {this.state.display.Apptodo && <button onClick={this.Logout}>Log out</button>}
+          </div>
+
         </div>
         {this.state.display.Signup && <Signup Clickin={this.Signup} tellerror={this.state.error.sign} />}
         {this.state.display.Login && <Login tellerror={this.state.error.sign} Clickin={this.Signin} />}
-       {this.state.display.Apptodo && <div className="todoApp">
-           <Apptodo Enter={this.addTodo} />
+        {this.state.display.Apptodo && <div className="todoApp">
+          <Apptodo Enter={this.addTodo} />
           <div className="Todolist">
-          { this.showTodo(this.state.user[index].todo) }
-          
+            {this.showTodo(this.state.user[index].todo)}
           </div>
         </div>}
       </div>

@@ -7,7 +7,7 @@ export function Login(props){
                 <p>Username</p>
                 <input type="text" placeholder="Your user name?" />
                 <p>Pass</p>
-                <input type="text" placeholder="Pass??" />
+                <input type="password" placeholder="Pass??" />
                 <p className="Error">{props.tellerror}</p>
                 <div>
                     <input type="button" value="Sign in" onClick={props.Clickin}/>
