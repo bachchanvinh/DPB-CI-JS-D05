@@ -20,7 +20,7 @@ export function Apptodo (props) {
     return (
 
       <div className="Todo">
-        <Header />
+        <Header account={props.account} />
         <Inputtodo Enter={props.Enter} />
         {/* {this.state.todoList} */}
       </div>

@@ -1,5 +1,5 @@
-export function Header() {
+export function Header(props) {
     return (
-        <h1>Todo list</h1>
+        <h1>Hello <span>{props.account}</span></h1>
     )
 }

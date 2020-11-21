@@ -121,23 +121,24 @@ class App extends React.Component {
   }
   Save(e) {
     // .children[0].innerText)
-    let middle = e.target.parentElement.parentElement.children[1].children[1].children
-    let datasave = []
-    for (let i = 0; i < middle.length; i++) {
-      datasave.push(middle[i].children[0].innerText)
-    }
-    datauser[index].todo = datasave
-    this.setState({ user: datauser })
-    db.collection("users").doc(idseveruser[index]).update({
-      "todo": this.state.user[index].todo
-    })
-      .then(function () {
-        console.log("Document successfully updated!");
-      });
+    // let middle = e.target.parentElement.parentElement.children[1].children[1].children
+    // let datasave = []
+    // for (let i = 0; i < middle.length; i++) {
+    //   datasave.push(middle[i].children[0].innerText)
+    // }
+    // datauser[index].todo = datasave
+    // this.setState({ user: datauser })
+    // db.collection("users").doc(idseveruser[index]).update({
+    //   "todo": this.state.user[index].todo
+    // })
+    //   .then(function () {
+    //     console.log("Document successfully updated!");
+    //   });
+    console.log(e.target.innerText)
   }
   showTodo(array) {
     let arrTodo = []
-    arrTodo = array.map((x, n) => <Todolist todo={x} className={n} onClickX={this.removeTodo} />)
+    arrTodo = array.map((x, n) => <Todolist edit ={this.Save}todo={x} className={n} onClickX={this.removeTodo} />)
     return arrTodo
   }
   addTodo(e) {
@@ -170,7 +171,7 @@ class App extends React.Component {
         {this.state.display.Signup && <Signup Clickin={this.Signup} tellerror={this.state.error.sign} />}
         {this.state.display.Login && <Login tellerror={this.state.error.sign} Clickin={this.Signin} />}
         {this.state.display.Apptodo && <div className="todoApp">
-          <Apptodo Enter={this.addTodo} />
+          <Apptodo Enter={this.addTodo} account={this.state.user[index].id}/>
           <div className="Todolist">
             {this.showTodo(this.state.user[index].todo)}
           </div>

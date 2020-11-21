@@ -13,6 +13,9 @@
 .todoApp .Todo h1 {
     font-weight: bolder;
 }
+.todoApp .Todo h1 span {
+    color:blue
+}
 .todoApp .Todo input {
     width: 250px;
 }
@@ -38,18 +41,18 @@
 }
 
 .Todolist button{
-    width: 20pt;
-    height: 16pt;
-    border-radius: 20%;
+    width: 38pt;
+    height: 17pt;
+    border-radius: 10%;
     border: solid thin gray;
     margin-right: 8pt;
     font-weight: bold;
 }
 .Todolist button:hover{
-    width: 20pt;
-    height: 16pt;
+    width: 38pt;
+    height: 17pt;
+    border-radius: 10%;
     border:thin gray solid;
-    border-radius: 1pt;
     background-color: rgb(194, 194, 194);
     box-shadow:  1px 1px 1px rgb(177, 177, 177);
     color: rgb(255, 255, 255);
