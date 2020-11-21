@@ -1,8 +1,10 @@
 .Signup {
     border-radius: 3pt;
     border: black thin solid;
-    padding: 20pt 12pt;
+    padding: 20pt 0pt;
     box-shadow:  3px 10px 10px rgb(177, 177, 177);
+    width: 350px;
+    padding-left:60px
 }
 h1 {
     margin-bottom: 12pt;
@@ -11,7 +13,7 @@ p {
     margin: 6pt 0 3pt 0
 }
 .Signup >input {
-    width: 215px;
+    width: 290px;
 }
 .Signup .Error {
     font-size: 8pt;
@@ -20,20 +22,20 @@ p {
 }
 .Signup div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .Signup div input {
     border:thin gray solid;
     border-radius: 1pt;
     margin-top: 8pt;
-    width: 219px;
+    width: 290px;
     font-weight: bold;
 }
 .Signup div input:hover {
     border:thin gray solid;
     border-radius: 1pt;
     margin-top: 8pt;
-    width: 219px;
+    width: 290px;
     background-color: rgb(194, 194, 194);
     box-shadow:  1px 1px 1px rgb(177, 177, 177);
     color: rgb(255, 255, 255);

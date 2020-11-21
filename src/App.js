@@ -120,13 +120,8 @@ class App extends React.Component {
       });
   }
   Save(e) {
-    // .children[0].innerText)
-    // let middle = e.target.parentElement.parentElement.children[1].children[1].children
-    // let datasave = []
-    // for (let i = 0; i < middle.length; i++) {
-    //   datasave.push(middle[i].children[0].innerText)
-    // }
-    // datauser[index].todo = datasave
+    let updvalue= e.target.parentElement.children[0].innerText
+    
     // this.setState({ user: datauser })
     // db.collection("users").doc(idseveruser[index]).update({
     //   "todo": this.state.user[index].todo
@@ -134,11 +129,11 @@ class App extends React.Component {
     //   .then(function () {
     //     console.log("Document successfully updated!");
     //   });
-    console.log(e.target.innerText)
+   
   }
   showTodo(array) {
     let arrTodo = []
-    arrTodo = array.map((x, n) => <Todolist edit ={this.Save}todo={x} className={n} onClickX={this.removeTodo} />)
+    arrTodo = array.map((x, n) => <Todolist todo={x} className={n} onClickedit={this.Save}onClickX={this.removeTodo} />)
     return arrTodo
   }
   addTodo(e) {

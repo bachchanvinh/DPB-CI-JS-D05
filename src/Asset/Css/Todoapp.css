@@ -3,6 +3,7 @@
     flex-flow: wrap column;
     align-items: center;
     border:  black thin solid;
+    width: 450px;
 }
 .todoApp .Todo {
     margin: 10pt;
@@ -19,9 +20,12 @@
 .todoApp .Todo input {
     width: 250px;
 }
+.Todolist {
+    width: 350px;
+}
 .Todolist p {
     display: flex;
-    width: 250px;
+    width: 360px;
     justify-content: space-between;
     align-items: center;
     font-size: 14pt;
@@ -31,9 +35,9 @@
     width: 200px;
 }
 .Todolist p:hover {
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(233, 231, 231);
     display: flex;
-    width: 250px;
+    width: 360px;
     justify-content: space-between;
     align-items: center;
     font-size: 14pt;
