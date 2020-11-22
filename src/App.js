@@ -9,10 +9,16 @@ import { Apptodo } from './Components/Apptodo'
 import { Login } from './Components/Login/Login'
 import { Signup } from './Components/Login/Signup'
 import { Todolist } from './Components/Todo/Todolist'
+import { Edit } from './Components/Todo/Edit'
+
 firebase.initializeApp(firebaseConfig);//firebase
 const db = firebase.firestore();//firebase
 
-let datauser = []
+let datauser = [{
+  id: "vinh",
+  pass: "",
+  todo: [123, 321]
+}]
 let idseveruser = []
 let index = 0
 class App extends React.Component {
@@ -24,11 +30,15 @@ class App extends React.Component {
         Apptodo: false,
         Login: true,
         Signup: false,
+        Editing: "",
+        Edit: false,
       },
       error: {
         sign: ""
-      }
+      },
+      place: ""
     }
+    // this.textInput = React.createRef()
     this.sWitch = this.sWitch.bind(this)
     this.Signin = this.Signin.bind(this)
     this.Signup = this.Signup.bind(this)
@@ -36,11 +46,12 @@ class App extends React.Component {
     this.Save = this.Save.bind(this)
     this.showTodo = this.showTodo.bind(this)
     this.addTodo = this.addTodo.bind(this)
+    this.updateTodo = this.updateTodo.bind(this)
     this.removeTodo = this.removeTodo.bind(this)
+    this.readTodo = this.readTodo.bind(this)
 
   }
   componentDidMount() {
-
     db.collection("users")
       .get()
       .then(function (querySnapshot) {
@@ -55,10 +66,12 @@ class App extends React.Component {
       });
   }
   sWitch(e) {
+    console.log(this.state.display.Apptodo)
     this.setState({ display: { Login: !this.state.display.Login, Signup: !this.state.display.Signup }, error: { sign: "" } })
     this.state.display.Login === true ? e.target.innerText = "Log in" : e.target.innerText = "Sign up"
   }
   Signup(e) {
+
     let uname = e.target.parentElement.parentElement.children[2].value
     let upass = e.target.parentElement.parentElement.children[4].value
     let check = true
@@ -95,6 +108,7 @@ class App extends React.Component {
     }
   }
   Signin(e) {
+
     let uname = e.target.parentElement.parentElement.children[2].value
     let upass = e.target.parentElement.parentElement.children[4].value
     for (let i = 0; i < this.state.user.length; i++) {
@@ -120,20 +134,18 @@ class App extends React.Component {
       });
   }
   Save(e) {
-    let updvalue= e.target.parentElement.children[0].innerText
-    
-    // this.setState({ user: datauser })
-    // db.collection("users").doc(idseveruser[index]).update({
-    //   "todo": this.state.user[index].todo
-    // })
-    //   .then(function () {
-    //     console.log("Document successfully updated!");
-    //   });
-   
+    this.setState({ user: datauser })
+    db.collection("users").doc(idseveruser[index]).update({
+      "todo": this.state.user[index].todo
+    })
+      .then(function () {
+        console.log("Document successfully updated!");
+      });
+
   }
   showTodo(array) {
     let arrTodo = []
-    arrTodo = array.map((x, n) => <Todolist todo={x} className={n} onClickedit={this.Save}onClickX={this.removeTodo} />)
+    arrTodo = array.map((x, n) => <Todolist todo={x} className={n} onClickedit={this.readTodo} onClickX={this.removeTodo} />)
     return arrTodo
   }
   addTodo(e) {
@@ -143,6 +155,27 @@ class App extends React.Component {
       this.setState({ user: datauser })
       // this.showTodo(datauser[index].todo)
       e.target.value = ""
+    }
+  }
+  readTodo(e) {
+    let value = e.target.parentElement.children[0].innerText
+    let place = e.target.parentElement.children[0].className
+    this.setState({
+      display: { Apptodo: true, Editing: value, Edit: true },//SAI GI DO
+      place: Number(place)
+    })
+
+    // this.textInput.current.focus()
+
+  }
+  updateTodo(e) {
+    this.setState({ display: { Apptodo: true, Edit: true, Editing: e.target.value } })
+    if (e.key === "Enter") {
+      datauser[index].todo[this.state.place] = e.target.value
+      this.setState({
+        user: datauser,
+        display: { Apptodo: true, Edit: false }
+      })
     }
   }
   removeTodo(e) {
@@ -166,7 +199,8 @@ class App extends React.Component {
         {this.state.display.Signup && <Signup Clickin={this.Signup} tellerror={this.state.error.sign} />}
         {this.state.display.Login && <Login tellerror={this.state.error.sign} Clickin={this.Signin} />}
         {this.state.display.Apptodo && <div className="todoApp">
-          <Apptodo Enter={this.addTodo} account={this.state.user[index].id}/>
+          <Apptodo Enter={this.addTodo} account={this.state.user[index].id} />
+          {this.state.display.Edit && <Edit value={this.state.display.Editing} onChange={this.updateTodo} Enter={this.updateTodo} autoFocus={this.textInput} />}
           <div className="Todolist">
             {this.showTodo(this.state.user[index].todo)}
           </div>
