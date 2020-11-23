@@ -177,6 +177,11 @@ class App extends React.Component {
         display: { Apptodo: true, Edit: false }
       })
     }
+    else if (e.type === "click") {
+      this.setState({
+        display: { Apptodo: true, Edit: false }
+      })
+    }
   }
   removeTodo(e) {
     datauser[index].todo.splice(Number(e.target.parentElement.className), 1)
@@ -200,7 +205,8 @@ class App extends React.Component {
         {this.state.display.Login && <Login tellerror={this.state.error.sign} Clickin={this.Signin} />}
         {this.state.display.Apptodo && <div className="todoApp">
           <Apptodo Enter={this.addTodo} account={this.state.user[index].id} />
-          {this.state.display.Edit && <Edit value={this.state.display.Editing} onChange={this.updateTodo} Enter={this.updateTodo} autoFocus={this.textInput} />}
+
+          {this.state.display.Edit && <div><div className="Blur" onClick={this.updateTodo}></div> <Edit value={this.state.display.Editing} onChange={this.updateTodo} Enter={this.updateTodo} autoFocus={this.textInput} /></div>}
           <div className="Todolist">
             {this.showTodo(this.state.user[index].todo)}
           </div>
