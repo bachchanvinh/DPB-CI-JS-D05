@@ -133,7 +133,7 @@ class App extends React.Component {
         console.log("Document successfully updated!");
       });
   }
-  Save(e) {
+  Save() {
     this.setState({ user: datauser })
     db.collection("users").doc(idseveruser[index]).update({
       "todo": this.state.user[index].todo
@@ -177,7 +177,7 @@ class App extends React.Component {
         display: { Apptodo: true, Edit: false }
       })
     }
-    else if (e.type === "click") {
+    else if (e.type === "click"||e.key==="Escape") {
       this.setState({
         display: { Apptodo: true, Edit: false }
       })

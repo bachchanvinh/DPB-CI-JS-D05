@@ -68,12 +68,13 @@
 
 .todoApp .Edit {
     position: fixed;
-    top:200px;
-    right:480px;
-    width: 300px;
+    top:28%;
+    left:36.5%;
+    width: 500px;
     height: 100px;
     color:black;
     font-weight: bold;
+    font-size: 15pt;
 }
 .Blur {
     position: absolute;
