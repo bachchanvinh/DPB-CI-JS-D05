@@ -1,5 +1,12 @@
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 export function Todolist(props) {
     return (
-        <p><span className={props.className}>{props.todo} </span><button onClick={props.onClickedit}>Edit</button><button onClick={props.onClickX}>Delete</button></p>
+        <div className="aaa">
+        <p><span className={props.className}>{props.todo} </span>
+        <span className="buttons">
+        <span className="button" onClick={props.onClickedit}>< EditIcon/></span>
+        <span className="button" onClick={props.onClickX}><DeleteIcon/></span></span></p>
+        </div>
     )
 }

@@ -46,24 +46,22 @@
     font-size: 14pt;
     padding-left: 5pt;
 }
-
-.Todolist button{
-    width: 38pt;
-    height: 17pt;
-    border-radius: 10%;
-    border: solid thin gray;
-    margin-right: 8pt;
-    font-weight: bold;
+.Todolist .buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-between ;
+    width: 70px;
 }
-.Todolist button:hover{
-    width: 38pt;
-    height: 17pt;
-    border-radius: 10%;
-    border:thin gray solid;
+.Todolist .button {
+    height: 20pt;
+    width: 23.5px;
+
+}
+.Todolist .button:hover{
+    height: 20pt;
     background-color: rgb(194, 194, 194);
     box-shadow:  1px 1px 1px rgb(177, 177, 177);
     color: rgb(255, 255, 255);
-    font-weight: bolder;
 }
 
 .todoApp .Edit {

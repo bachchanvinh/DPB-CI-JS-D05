@@ -14,11 +14,7 @@ import { Edit } from './Components/Todo/Edit'
 firebase.initializeApp(firebaseConfig);//firebase
 const db = firebase.firestore();//firebase
 
-let datauser = [{
-  id: "vinh",
-  pass: "",
-  todo: [123, 321]
-}]
+let datauser = []
 let idseveruser = []
 let index = 0
 class App extends React.Component {
@@ -134,6 +130,7 @@ class App extends React.Component {
       });
   }
   Save() {
+    console.log(index)
     this.setState({ user: datauser })
     db.collection("users").doc(idseveruser[index]).update({
       "todo": this.state.user[index].todo
@@ -158,8 +155,10 @@ class App extends React.Component {
     }
   }
   readTodo(e) {
-    let value = e.target.parentElement.children[0].innerText
-    let place = e.target.parentElement.children[0].className
+    let value = e.target.parentElement.parentElement.parentElement.children[0].innerText
+    console.log(value)
+    let place = e.target.parentElement.parentElement.parentElement.children[0].className
+    console.log(place)
     this.setState({
       display: { Apptodo: true, Editing: value, Edit: true },//SAI GI DO
       place: Number(place)
@@ -177,7 +176,7 @@ class App extends React.Component {
         display: { Apptodo: true, Edit: false }
       })
     }
-    else if (e.type === "click"||e.key==="Escape") {
+    else if (e.type === "click" || e.key === "Escape") {
       this.setState({
         display: { Apptodo: true, Edit: false }
       })
