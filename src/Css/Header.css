@@ -1,0 +1,8 @@
+.Header {
+    display: flex;
+    flex-flow:wrap column;
+    align-items: center;
+}
+.Header button {
+    margin-left:10pt
+}
