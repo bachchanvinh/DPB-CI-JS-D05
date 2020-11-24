@@ -3,3 +3,14 @@
     flex-flow: wrap column;
     align-items: center;
 }
+.Header button:hover {
+    border-radius: 5%;
+    height: 45px;
+    width: 100px;
+    background-color: rgb(71, 166, 255);
+}
+.Header button {    
+    border-radius: 5%;
+    height: 45px;
+    width: 100px;
+}
