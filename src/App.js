@@ -43,9 +43,7 @@ class App extends React.Component {
         <Header onClick={this.handleSubmit} onInput={this.handleChange} />
         <div className="Booklist">
           {this.state.bookshow}
-          {<Book/>,<Book/>,<Book/>,<Book/>}
         </div>
-
       </div>
     );
   }

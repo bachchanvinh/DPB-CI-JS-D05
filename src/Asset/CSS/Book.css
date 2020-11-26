@@ -2,5 +2,9 @@
     width: 30%;
     height: 500px;
     overflow: hidden;
-    
+    border: solid black thin;
+    margin: 10pt;
+    border-radius: 5pt;
+    padding:5pt;
+    background-color: rgb(201, 201, 253);
 }
