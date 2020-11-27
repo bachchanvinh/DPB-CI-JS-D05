@@ -1,0 +1,21 @@
+.Header {
+    padding: 50px 0px;
+}
+.Header h1 {
+    text-align: center;
+    margin-bottom: 18pt;
+}
+.Header div{
+    display: flex;
+    justify-content: space-between;
+}
+.Header input {
+    margin-right: 31px;
+    width: 300px;
+    text-align: center;
+}
+
+.Header button {
+    width: 50px;
+    height: 31px;
+}

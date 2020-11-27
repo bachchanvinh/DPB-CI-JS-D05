@@ -1,0 +1,24 @@
+.Charity {
+    border: solid black thin;
+    width: 30%;
+    margin: 10pt;
+    border-radius: 2%;
+    background-color: rgb(191, 232, 255);
+}
+.Charity h2 {
+    text-align: center;
+}
+.Charity .child_charity{
+    display: flex;
+    flex-flow:wrap row;
+
+}
+.Charity .child_charity div {
+    width: 40%;
+    overflow: hidden;
+}
+.Charity img {
+    height: 60%;
+    width: 45%;
+    margin: 6pt;
+}
