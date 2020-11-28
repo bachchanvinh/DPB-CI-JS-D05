@@ -1,0 +1,38 @@
+.Friendlist {
+    display: flex;
+    flex-flow: wrap column;
+    width: 20%;
+    height: 100%;
+    border: black thin solid;
+}
+.Friendlist .Headerfrlst{
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center;
+    border: black thin solid;
+}
+.Friendlist .Headerfrlst img{
+    height: 20%;
+    margin-right: 20px;
+}
+.Friendlist img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+} 
+
+.Friendlist .List {
+    height: 80%;
+    display: flex;
+    flex-flow:wrap column;
+    background-color: greenyellow;
+}
+
+.Friendlist .List .Friend {
+
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: rgb(219, 255, 166);
+}

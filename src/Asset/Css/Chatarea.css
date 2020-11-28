@@ -1,0 +1,46 @@
+
+.Chatarea {
+    border: black thin solid;
+    height: 100%;
+    width: 79.5%
+}
+.Chatarea .Headerchat{
+    border: black thin solid;
+    display: flex;
+    flex-flow:wrap row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(189, 189, 255);
+}
+
+.Chatarea .Headerchat img{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-right: 20pt;
+}
+
+.Chatarea .Chat {
+    height: 500px;
+    overflow-y:  scroll;
+    overflow-x: auto;
+}
+.Chatarea .input {
+    border: black solid thin;
+    height: 100px;
+    display: flex;
+    flex-flow:wrap row;
+    justify-content: space-between;
+    align-items: center;
+}
+.Chatarea .input input {
+    margin-left: 5pt;
+    height: 80px;
+    width: 90%;
+    font-size: 15pt
+}
+.Chatarea .input button {
+    height: 80px;
+    width: 7%;
+    margin-right: 5pt;
+}

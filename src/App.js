@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import { Chatarea } from './Component/Chatarea'
+import { Friendlist } from './Component/Friendlist'
 import './App.css';
+
+const datauser = {
+  avatar: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUQEhIQEBAQFQ8QDw8PDw8PDQ8QFRUWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQFy0dHR0tLSstLS0rLS0tLSstKy0tLS0tLS0tLS0tLS0tKystLS0tNy0rLS0tKystKzctLSsrLf/AABEIANAA8wMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAQIEBQYABwj/xAA0EAACAQIFAgUDAwQBBQAAAAAAAQIDEQQFEiExQVEGE2FxgSIykaGx8AcjM0LBUmLR4fH/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAhEQEBAAIDAQEAAgMAAAAAAAAAAQIREiExA0EiUQRhcf/aAAwDAQACEQMRAD8AyikJJg1IcjJrt1hriFsc4hsI7QlgziMZcoJGIRQEgSaS3v0W4qcJU+lKK937gPcJVeptgnE2nSaSw2o9ggKohoIIK/4kdcAaccKBEOFOAGtCxicx1JgZ1MLWV436r9hg9SK/NEjHHS22G3MlLTw7/mier4Tg8n8Of54nrGE4Q8VQatwUVbll5W4KOryzbFnfQZIFJBpApFkG4nDjhB59GIWEQ8KIVUTzssm8xBUDnEO6Y3yyZVaRnEZKBMdIG6TLmRcUVRDJ7C+WxZ9uxph3Ss0bYa7D2IomyQwVXkNJ/wD0jTluFTThBrkMuLZCfJ113BiBsC/JwIVMNgQ6kN1HRYbA9hRsBxZB149QRIlumvkBYjL04tPDS/vxPVsJweV+GF/eR6rhOBYrnglfgo6vLLvEcFJU5NsWV9CYOQSQORoRhxxwjZqnAK4oDCY91DyLHbLDZQGuA+51y5BuBaTtB05DfMHqjcNnG25ClMk4mpsQGzo+c1GOd7F1CTqA3yBqSL2jbqlS4y4jYtODb7iSfRoym7RV2aTKfBVastTahF+l2y58F5DrtOcWtDTV1Zs9IoUUlZJK3RE+quo83X9OO9WT+EJD+nV73qSXbg9HxdWMIuUmklu2+ECpYqEoKaaak0k+/QL/ANEv+nndX+m0rfTVd/8Auimv0KfMfA2LpbqMaqX/AESs/wAM9nk7Iizd9kUl8/1abi3GScZLlNWaGpmq8a4CXnNpc77bfjuZWSa5FKdmhIzCQncjoVMqUki4jpDFIkUncL2Is/DFNKrd9D0vCz2PNMllpmjf4StsGK/E+tLYpqnJPrVdisnI2xjKkYOTFlIFKRRFucDucAZFTF8wCIjz+MdKXGYrkBphWhKCqSG62LNDBybIPESAoWpLcadDK0ycgLY+cgcYt8CSdFGr8LZddqo4Qcb2vJp/Nu5UZVlvmyUW9N2lqte3wX+NwVTCTpqVWo8I5LzHT2lF9ePyTf6XJrttKGbQpPTNxSW2pNPT79UW2Bxqlz7ej9UeYVsqSVSdTFQq05JvD6Kl6kpPiUuyXUs/BWYz+2V5Ju2q97W2t6Idxyx9KZY5+LT+peaOFFU096j39k1sdgJTWVKpdudK1Rd/onqt+5A8Y5fPEVqcYq6jbU+2pqy/Q3OXZZGGGVG146XF363Qp2L0HhsxjVpRqwd1OKkvlGCzTxbUjVdO/lxu9U19U3Hiy6IusLSeEpVMO5fbqlSbum4vpt63MJi4eXVhUkuuppp2bXGzD05NNHUzOjWWhzcW+NU403L5k0zL59hIRl9D1dXvqaJ9TMMGpvEQhVnXlqtRnpdCE2mnLu1u3YkZVkahh51asbymrqOysuV8hljMPLsY5XP2aY4eifLKJuLmlsrlfboOVNlhyYahKzAXHU2US3y+a1L3RssJXMVl0d/k1+FHh6KsJ1CJKfIab2Ismboc5A5SFbByYGRyEGs4WwzKpjvLJVNDnE87k7+IEIDmggjYtlpHlEj4h2XuTZIr8Xu/Yv591H06iMxJS2OWwOW5u5i0qbk7G68KeH4SWqav6NFN4dyzXvY9DyShoWknfela1FFWwEaVVpKyla3Fk/YvHhI1KflySkmt01t+Bc4y1y+qDs16XIOX4ipCWmfD66WkiacqoqeC6aeznbq78e3cl4XJIUbRjfzJP6LOV5e67I1+Gw7l8knC5elN1Hu/tj6IrujciNluV2WqX3O179y3S2sOsIy5NM7dq3NcshWjZrdcSWzXszHVsqjNulONpU3q331xf+y/5PQWQsVg4yalb6o8P0fKFlirHLTDrIqUbtxW262i7A80r2pqC+rput0uiNJmuEkk9KuvTuUlHLZzeqd16W2sZ3e2ks0Zgsui6X1KzfKszA5xhtFSSXCZ6s4KMbcWRiM2wXmSlIfhSb6ZFDtaHV6LhKz2E0p+/wC5cZ1b5J9Xw1c1lBGN8OytUce6/Y2lIePp/glRkdsJVYBs6GZGxkmLJg5MRkucNOEajpVg+srYSDqoefcXbMh5TByqApTBOQSJuSR5hXSk7sl0ndkOtPouDb5467Z/TLYc5DaSuxr3LDKsG5zSXF+S2LdeEcK1BNmnjBp3I+UYTTBJdEixnB2JO3YtGd+STDDRe9l+CroSersW9GWw52V6GpwSVkESBoIhkRyG3I+KrqPqRljP5f8AnoXIE5s5lfRxup2v89CdGasBBSImLSSuS5Pch4zdE04osZWb+lb3/IyGX7fbz3RNo0lq4+S0dPYy1tpvTzDxRlNryStbf3MmnZnrWf0VKDT9TyvG0tMmVj0WXfabkcl5yeyupL3djaUnsecQlZ3/AAbzB17wi27txi2/WxX7svxJryI+oTEVdiP5yNecLiO5A5ME65Hq4gVzPiO6hxWvEnEcz4VXJBEFVMVUzl5HyCaBtEryhHSFMoe0CtKyt3IrYSvK7YG50zxFu6JSibHwrhd9TXsZXBrc9A8P0XZbcjga7BxsiWmAoRsg0ad+pNIydFc9STh3sDdJoZ5lggT0dOQKjUurnVp7FQaY3xbn6pt04u8lzuue3vv+hiZ+I613aTSf8v8AoQsyxb1y1XdRynqv0d9yvVVdiplVXUabAeJ6mpanJvuuT0rIcxVampJ7raS7OyPDlWs7rlHov9PcydWVTbTaNNSs9nK8rO3sXy3EWN1Wl1IuIldW6sfiqn0tre3HuQI1G+eTPI5EqnR0halTYFTpO3I7R0M1M9n1X6fyea5p9zv1PU86wt4Nd/3PK8zvqafKumUSAmaHKsd9GlveG3x0M8yRhKtn77ML4Mbqr6viyO8SRpDbGXJt0lPEA5ViO0Ix7HR7mcCscGws1AeqYsEFijjtc5qpg8VG0JPsmTIwT629xMXh7wkl1T/JMy7g2yM2IhZrcRHpmn5bG8l7o9PyaKSXxZdTy3AVLST9T0rIpakne5U8KtXQ3JSRDw7JcWLQ2Uj1odfySQU2TTNw76dtzsRUsu//AAQ6tfQ7/kbiMSmrp/ruGzeY+LctjGvKpeWio220t4Slvv3XJm5QS4ZsPFFWUpWi9afb6vT5MtUw9uWl6dSrDAUVfuegeAcG6cZSas6mnttFXsv1MTQwz5jaT6W3N74em4wSaaa7p/vbcJ0TU4mpaP7IZhKX+z5Iznr67Lj1JuGIyu6PInaQNQVtoh4qrYchImZ11pseWZ3/AJJe5uM8xTjFyR59jqupt9SqcQ5HQZwiES4oq8UxXAJl8f7a+QzpnHllq0+VQ3Aa4kt0xkqY5kfKouk4P5Zw+Q3VlCI9REg0ERx2p0dGAWERkWFiyLTkZDNqOirJdL3XsyIi48Sw/uJ94/sU56vyu8JSotF7novhTFXgm9jziLNR4VrvVZv6Vb+I2wKvUcPPqS4Mg4OV0iYlYKUPcgFSQST2I9SRCkPGO6sUle6ls2lbdF1WfRFZiY/qRkvBU4uhK/f+XuQHlcZPeHNt7I1FOjeK7r9UdHDojtpuKXCZVGO6jZ9+xNq4TTv+SfNWCSWpBexLo3LJXj7bFnSZV06birLgl0KmxeLPL+02pVKfH1iTXqGfzjFW6+qNNpkUOf47mBl6rLHN6ilK6+SqmFFNOOEETR5XH+1H5/cPJDcBG1OPsh8mednf5VfEzSNlEJcZJilHEFo4czi1cUiIVMFEKkZUTESI+LBodciwcVV4jh9MZdm1+TPmozezptP0t7mZPQ/xr/BGU1SxLPLMV5ckyrRKos6cfUvWPDWYa4p/juaFVLnmPhbMtL0Ppwb7DYtSWxWSUxz6AJvoHhG6uDlTMqpElQuQMVh2i60DJ077Cs2cy0rsFDaz5JMsP1Q6nh7Mk3sKQ7UCdG4kKewet6D4RDQ30DEdpXsPq0x0tkVIW0LF2sZLOZbPurmnxtVLkxefVt3G5ejjN1ndgKsLEyFO7AYrsLRVFH0ablJRXLaQ0tcjobub7WiRnlxx2MZurm1kl2SQOSHOQ1yPOkdOoa0CmEcgU2VImw3ScdcQokxSF1EbUdrJ4nal6xymRI1AsZE8S2gZ7W2UfkpCZmtW836bEM9D5Y8cZGWV3SpCptC00PRolJwGJtNX235R6fkldSirHktzZeD8yt9Dfr8FTvoq9Jw8tg7iQsHUTS/JJU9xWEXTuMcQje42YjMsNmjpSO6EmZKnwPSFEuPQJOPAytwwk5EKvW5HolHntay27GIx9XW79VsX/ifGWVlyzM05dSlw5y0K7XJVVZ3dyVj8RqduiITe4qVOhEvMJU+lW26FHBlhgattu5l9cd4q+d1Vjc5zGCNnHpr4c5DHIRsaypCvbtZwNs4rRcaLqOuckPhTuSNOgwttr9hYUh9b7X7Mn9VjjWaryu2xh1TlnHoOcWHAp0BUMGkjLsS6crojHSAPUfDua6lv2/BpKVTg858NYhON1zxJdmbHBYm/6FUqvmwdaQFVhZO5FENpSuFbGwjZHLchTtY2UjpqwkioRkqhSZnjlBO7LKrUsYzP9Um7N2vwUciom3iKrd3bexGxsNF12LTA0HT3ktpLZ9mUWbYjXNpcJ/lj/Ni1CuMQ8YSRyDQlbcCPixwLijWuh5XYOpZ2LJHH9MeOTXG2myGqI85ijaQNwOFZwwVSJNIh3Q6FWxllETLSeBrzSixqxBCx9ba3cPnjbku5yTaqqdREOYxHoOQeDFQNsIhg2aEY5jWgCbk2N8qor/bLaX/k9GwU+LHlTNt4NzXXHyZP64fbf/aP/ocFbKnJkqnIj0rWJVOkTSK6gkKn5CeWMdImnAp1Lg5zDKlwJOkOBBrq5V1MHdu5dygV2a4iNODnJ2UU2ypBtlfEmMVOGhfdL7fRdWY9EnMcY61R1H1+1do9ER0FDhiHtgxA9CxYhyACRdty3oO8blOWuXO8TL7zra/n6K4jJMKwbRzytraHdnCtHFF2/9k=",
+  username: "MyName",
+  friendlist: [
+    {
+      name: "pikachu",
+      ava: "https://images-na.ssl-images-amazon.com/images/I/61iWqqcq%2BKL._AC_SL1500_.jpg",
+      conver: [
+        { 0: "asdasd" },
+        { 1: "asfsdgadsgasfdg" },
+        { 1: "bjksbdjgkasdf" },
+        { 1: "asfsdgadsgasfdg123" }]
+    },
+    {
+      name: "Homoer",
+      ava: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfIuczP-sUn1LqRNUpITE_sGMWBA3UJaheXA&usqp=CAU",
+    },
+    {
+      name: "November",
+      ava: "",
+    },
+  ]
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Friendlist avatar={datauser.avatar} username={datauser.username} avatarfriend={datauser.friendlist[1].ava} friendname={datauser.friendlist[1].name}/>
+      <Chatarea avatarchat={datauser.friendlist[0].ava} userchatname={datauser.friendlist[0].name} conver="asdhuiasjhkfsdljhaf" />
+     
     </div>
   );
 }
