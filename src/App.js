@@ -29,8 +29,9 @@ const datauser = {
 function App() {
   return (
     <div className="App">
-      <Friendlist avatar={datauser.avatar} username={datauser.username} avatarfriend={datauser.friendlist[1].ava} friendname={datauser.friendlist[1].name}/>
-      <Chatarea avatarchat={datauser.friendlist[0].ava} userchatname={datauser.friendlist[0].name} conver="asdhuiasjhkfsdljhaf" />
+     <Friendlist avatar={datauser.avatar} username={datauser.username} avatarfriend={datauser.friendlist[1].ava} friendname={datauser.friendlist[1].name}/>
+    <Chatarea avatarchat={datauser.friendlist[0].ava} userchatname={datauser.friendlist[0].name} conver="asdhuiasjhkfsdljhaf" />
+      
      
     </div>
   );

@@ -14,6 +14,11 @@ export function Chatarea(props) {
                 <Chat conver={props.conver} />
                 <Chat conver={props.conver} />
                 <Chat conver={props.conver} />
+                <Chat conver={props.conver} />
+                <Chat conver={props.conver} />
+                <Chat conver={props.conver} />
+                <Chat conver={props.conver} />
+
             </div>
             <div className="input">
                 <input type ="text"/>

@@ -10,9 +10,10 @@
     flex-flow: wrap row;
     align-items: center;
     border: black thin solid;
+    height: 100px;
 }
-.Friendlist .Headerfrlst img{
-    height: 20%;
+.Friendlist .Headerfrlst img {
+    
     margin-right: 20px;
 }
 .Friendlist img {
@@ -22,10 +23,11 @@
 } 
 
 .Friendlist .List {
-    height: 80%;
     display: flex;
     flex-flow:wrap column;
     background-color: greenyellow;
+    height: 602px;
+    overflow: scroll;
 }
 
 .Friendlist .List .Friend {
@@ -33,6 +35,6 @@
     display: flex;
     flex-flow: wrap row;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background-color: rgb(219, 255, 166);
 }
