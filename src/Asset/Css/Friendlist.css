@@ -4,6 +4,7 @@
     width: 20%;
     height: 100%;
     border: black thin solid;
+    margin-right:2px;
 }
 .Friendlist .Headerfrlst{
     display: flex;
@@ -13,21 +14,25 @@
     height: 100px;
 }
 .Friendlist .Headerfrlst img {
-    
-    margin-right: 20px;
+    border-radius: 50%;
+    height: 90px;
+    width: 100px;
+    margin: 5px;
 }
-.Friendlist img {
+.Friendlist .List img {
     border-radius: 50%;
     height: 100px;
     width: 100px;
+    margin: 5px;
 } 
 
 .Friendlist .List {
     display: flex;
-    flex-flow:wrap column;
-    background-color: greenyellow;
+    flex-flow:nowrap column;
+    background-color: white;
     height: 602px;
-    overflow: scroll;
+    overflow-y: scroll;
+   
 }
 
 .Friendlist .List .Friend {
@@ -37,4 +42,24 @@
     align-items: center;
     margin-bottom: 10px;
     background-color: rgb(219, 255, 166);
+    border: solid black thin;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius:10%;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

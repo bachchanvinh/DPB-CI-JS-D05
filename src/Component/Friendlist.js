@@ -13,6 +13,7 @@ export function Friendlist(props) {
                 <Friend avatarfriend={props.avatarfriend} friendname={props.friendname} />
                 <Friend avatarfriend={props.avatarfriend} friendname={props.friendname} />
                 <Friend avatarfriend={props.avatarfriend} friendname={props.friendname} />
+                <Friend avatarfriend={props.avatarfriend} friendname={props.friendname} />
             </div>
         </div>
     )
