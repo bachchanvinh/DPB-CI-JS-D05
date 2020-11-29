@@ -9,13 +9,12 @@ export class Todoapp extends React.Component {
         this.state = {
             todoadd: "",
             datatodo: [`aaasd1`, `aaasd2`, `aaasd3`],
-            valueedit: {
-                index: 0,
-                value: "asdasd",
-            }
+            valueedit: "asdasd",
+            indexedit: 0,
         }
         this.addtodo = this.addtodo.bind(this)
         this.clickedit = this.clickedit.bind(this)
+        this.edittodo = this.edittodo.bind(this)
         this.deletetodo = this.deletetodo.bind(this)
     }
     componentDidMount() {
@@ -30,12 +29,17 @@ export class Todoapp extends React.Component {
         }
     }
     clickedit(indx) {
-       
-        this.setState({valueedit: {
-            index: indx,
-            value: this.state.datatodo[indx],
-        }})
-        console.log(this.state.valueedit)
+        this.setState({
+            valueedit: this.state.datatodo[indx],
+            indexedit: indx,
+        })
+      
+    }
+    edittodo(e) {
+        this.setState({ valueedit: e.target.value })
+        if (e.key === "Enter") {
+            
+        }
     }
     deletetodo(indx) {
         let todos = this.state.datatodo
@@ -52,7 +56,7 @@ export class Todoapp extends React.Component {
                         />)
                     })}
                 </div>
-                <Todoedit value={this.state.valueedit.value} />
+                <Todoedit value={this.state.valueedit} onKeyDown={this.edittodo} onChange={this.edittodo} />
             </div>
         )
     }

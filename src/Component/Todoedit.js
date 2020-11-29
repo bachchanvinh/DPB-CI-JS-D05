@@ -2,7 +2,7 @@
 export function Todoedit (props){
     return(
         <div className="Edit">
-        <textarea>{props.value}</textarea>
+        <textarea value={props.value} onChange={props.onChange} onKeyDown={props.onKeyDown}></textarea>
         </div>
     )
 }
