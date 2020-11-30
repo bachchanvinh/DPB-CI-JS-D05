@@ -198,7 +198,6 @@ class App extends React.Component {
             {this.state.display.Apptodo && <button onClick={this.Save}>Save</button>}
             {this.state.display.Apptodo && <button onClick={this.Logout}>Log out</button>}
           </div>
-
         </div>
         {this.state.display.Signup && <Signup Clickin={this.Signup} tellerror={this.state.error.sign} />}
         {this.state.display.Login && <Login tellerror={this.state.error.sign} Clickin={this.Signin} />}
