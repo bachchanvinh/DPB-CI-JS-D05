@@ -156,8 +156,11 @@ class App extends React.Component {
   }
   readTodo(e) {
     let value = e.target.parentElement.parentElement.parentElement.children[0].innerText
-    console.log(value)
-    let place = e.target.parentElement.parentElement.parentElement.children[0].className
+    value = value.replace("🗑️", "")
+    value = value.replace("🖊️", "")
+
+
+    let place = e.target.parentElement.parentElement.parentElement.children[0].children[0].className
     console.log(place)
     this.setState({
       display: { Apptodo: true, Editing: value, Edit: true },//SAI GI DO
