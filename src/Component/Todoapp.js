@@ -38,7 +38,9 @@ export class Todoapp extends React.Component {
     edittodo(e) {
         this.setState({ valueedit: e.target.value })
         if (e.key === "Enter") {
-            
+            let data= this.state.datatodo
+            data.splice(this.state.indexedit,1,e.target.value)
+            this.setState({datatodo:data})
         }
     }
     deletetodo(indx) {
