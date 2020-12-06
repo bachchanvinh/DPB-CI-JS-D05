@@ -1,0 +1,21 @@
+.Todoapp {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.Todoheader {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.Todoheader h1 {
+    font-size: 35pt;
+    margin-bottom: 20px;
+}
+
+.Todoheader input {
+    font-size: 15pt;
+    margin-bottom: 20px;
+}
+

@@ -1,12 +1,22 @@
-import {Todoapp} from './Component/Todoapp'
+import React from 'react'
+import { Todoapp } from './Component/Todoapp'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Todoapp/>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="Header">
+          <button onClick="">Signup</button>
+        </div>
+        <Todoapp />
+      </div>
+    );
+  }
 }
 
 export default App;

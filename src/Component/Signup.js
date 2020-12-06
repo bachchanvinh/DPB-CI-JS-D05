@@ -1,9 +1,9 @@
 import React from 'react'
 
-export function Signin(props) {
+export function Signup(props) {
     return (
-        <div className="Signin">
-            <h1>Sign in</h1>
+        <div className="Signup">
+            <h1>Sign up</h1>
             <form className="form-controls">
                 <div className="form-control">
                     <label for="email">Email adress</label>
@@ -14,7 +14,7 @@ export function Signin(props) {
                     <input type="text" placeholder="Enter password" onChange={props.onChangepassword} />
                 </div>
             </form>
-            <button className="Signinbtn" onClick={props.onClicksignin}>Sign in</button>
+            <button className="Signupbtn" onClick={props.onClickSignup}>Sign up</button>
         </div>
     )
 } 
