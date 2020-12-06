@@ -12,6 +12,7 @@ export class Todoapp extends React.Component {
             datatodo: [`aaasd1`, `aaasd2`, `aaasd3`],
             valueedit: "asdasd",
             indexedit: 0,
+            displayedit: false,
         }
         this.addtodo = this.addtodo.bind(this)
         this.clickedit = this.clickedit.bind(this)
@@ -33,13 +34,24 @@ export class Todoapp extends React.Component {
         this.setState({
             valueedit: this.state.datatodo[indx],
             indexedit: indx,
+            displayedit: true,
+            autofocus:true,
         })
-      
+
     }
     edittodo(e) {
         this.setState({ valueedit: e.target.value })
         if (e.key === "Enter") {
-            
+            let edit = e.target.value
+            let datatodo = this.state.datatodo
+            datatodo[this.state.indexedit] = edit
+            this.setState({
+                datatodo: datatodo,
+                displayedit: false
+            })
+        }
+        else if (e.type === 'click' || e.key === "Escape") {
+            this.setState({ displayedit: false })
         }
     }
     deletetodo(indx) {
@@ -47,9 +59,15 @@ export class Todoapp extends React.Component {
         todos.splice(indx, 1)// them function firebase sau
         this.setState({ datatodo: todos })
     }
+    movetoend(e){
+        let temp =e.target.value
+        e.target.value=''
+        e.target.value=temp
+    }
     render() {
         return (
             <div className="Todoapp">
+                {this.state.displayedit && <div><div className="Blur" onClick={this.edittodo}></div><Todoedit value={this.state.valueedit} onFocus={this.movetoend}autoFocus={this.state.autofocus} onKeyDown={this.edittodo} onChange={this.edittodo} /></div>}
                 <Todoheader onChange={this.addtodo} onKeyDown={this.addtodo} />
                 <div className="Todolist">
                     {this.state.datatodo.map((x, index) => {
@@ -57,7 +75,7 @@ export class Todoapp extends React.Component {
                         />)
                     })}
                 </div>
-                <Todoedit value={this.state.valueedit} onKeyDown={this.edittodo} onChange={this.edittodo} />
+
             </div>
         )
     }

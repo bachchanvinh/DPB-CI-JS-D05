@@ -11,7 +11,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="Header">
-          <button onClick="">Signup</button>
+          {false && <button onClick="">Signup</button>}
+          {false && <button onClick="">Signin</button>}
+          {true && <button onClick="">Logout</button>}
         </div>
         <Todoapp />
       </div>
