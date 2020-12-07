@@ -1,21 +1,21 @@
 import React from 'react'
-import '../Asset/CSS/Signin.css'
+import '../Asset/CSS/Signup.css'
 
-export function Signin(props) {
+export function Signup(props) {
     return (
-        <div className="Signin">
-            <h1>Sign in</h1>
+        <div className="Signup">
+            <h1>Sign up</h1>
             <div className="form-controls">
                 <div className="form-control">
-                    <label for="email">Email adress:</label>
+                    <label for="email">Email adress</label>
                     <input type="text" placeholder="email@mail.com" onChange={props.onChangeemail} />
                 </div>
                 <div className="form-control">
-                    <label for="Password">Password:</label>
+                    <label for="Password">Passowrd</label>
                     <input type="text" placeholder="Enter password" onChange={props.onChangepassword} />
                 </div>
             </div>
-            <button className="Signinbtn" onClick={props.onClicksignin}>Sign in</button>
+            <button className="Signupbtn" onClick={props.onClickSignup}>Sign up</button>
         </div>
     )
 } 

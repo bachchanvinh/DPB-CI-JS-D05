@@ -1,0 +1,31 @@
+.Signin {
+    margin-top:41px;
+    border:solid black thin;
+    padding:0px 35px 35px 35px;
+    display: flex;
+    flex-flow: column wrap ;
+    align-items: center;
+
+}
+
+.Signin > h1{
+    font-size: 35pt;
+    margin-bottom: 20px;
+}
+
+.Signin .form-control{
+    display: flex;
+    flex-flow:column;
+    margin-bottom: 20px;
+    font-size: 15pt;
+}
+
+.Signin .form-control input{
+    width: 300px;
+    margin: 10px 0px;
+}
+
+.Signin > button {
+    width: 200px ;
+    height: 30px;
+}

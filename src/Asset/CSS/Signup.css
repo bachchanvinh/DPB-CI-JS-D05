@@ -1,0 +1,31 @@
+.Signup {
+    margin-top:41px;
+    border:solid black thin;
+    padding:0px 35px 35px 35px;
+    display: flex;
+    flex-flow: column wrap ;
+    align-items: center;
+
+}
+
+.Signup > h1{
+    font-size: 35pt;
+    margin-bottom: 20px;
+}
+
+.Signup .form-control{
+    display: flex;
+    flex-flow:column;
+    margin-bottom: 20px;
+    font-size: 15pt;
+}
+
+.Signup .form-control input{
+    width: 300px;
+    margin: 10px 0px;
+}
+
+.Signup > button {
+    width: 200px ;
+    height: 30px;
+}

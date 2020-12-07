@@ -1,0 +1,25 @@
+* {
+margin:0;
+padding:0;
+}
+.App {
+    width: 100%;
+    display:flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.Header {
+    background-color: blue;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.Header > button {
+    border:none;
+    border-radius: 10px;
+    height: 35px;
+    width: 100px;
+    margin: 15px 30px 15px 0px;
+}

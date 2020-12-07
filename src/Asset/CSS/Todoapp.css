@@ -1,0 +1,74 @@
+.Todoapp {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    
+}
+
+.Todoheader {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top:41px ;
+}
+.Todoheader h1 {
+    font-size: 35pt;
+    margin-bottom: 20px;
+}
+
+.Todoheader input {
+    font-size: 15pt;
+    margin-bottom: 20px;
+    width: 350px;
+}
+/* ----------------------------------------------------------------------- */
+.Todoapp .Todolist {
+    width: 300px;
+    display:flex;
+    flex-flow:wrap column;
+    align-items: center;
+    justify-content: center;
+}
+.Todoapp .Todolist .Todo {
+    width: 300px;
+    display:flex;
+    flex-flow:wrap row;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px;
+    font-size:15pt
+}
+
+.Todoapp .Todolist .Todo span {
+    width: 50%;
+    display:block;
+    word-wrap:break-word;    
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+.Todoapp .Blur {
+    width: 1000%;
+    height: 1000%;
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    background-color:rgb(172, 172, 172);
+    opacity:0.8;
+}
+.Todoapp .Edit {
+    position: absolute;
+    top:35%;
+    left:33%;
+    right: 33%;
+    width: 600px;
+    height: 200px;
+   
+}
+.Todoapp .Edit textarea{
+    width: 100%;
+    height: 100%;
+    color:black;
+    font-size: 15pt;
+}
