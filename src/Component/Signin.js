@@ -6,12 +6,13 @@ export function Signin(props) {
         <div className="Signin">
             <h1>Sign in</h1>
             <div className="form-controls">
+               
                 <div className="form-control">
-                    <label for="email">Email adress:</label>
+                    <label htmlFor="email">Email adress:</label>
                     <input type="text" placeholder="email@mail.com" onChange={props.onChangeemail} />
                 </div>
                 <div className="form-control">
-                    <label for="Password">Password:</label>
+                    <label htmlFor="Password">Password:</label>
                     <input type="text" placeholder="Enter password" onChange={props.onChangepassword} />
                 </div>
             </div>
