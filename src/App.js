@@ -2,7 +2,7 @@ import React from 'react'
 import { Todoapp } from './Component/Todoapp'
 import { Signin } from './Component/Signin'
 import { Signup } from './Component/Signup'
-import { Signupfunc, Signinfunc, CurentSignin } from './Controller/Todocontroll'
+import { Signupfunc, Signinfunc, CurentSignin, Signoutfunc } from './Controller/Todocontroll'
 import './App.css';
 
 class App extends React.Component {
@@ -16,6 +16,7 @@ class App extends React.Component {
     this.handleonChangepass = this.handleonChangepass.bind(this)
     this.handleSignin = this.handleSignin.bind(this)
     this.handleSignup = this.handleSignup.bind(this)
+    this.handleSignout = this.handleSignout(this)
   }
   handleonChangeuname(e) {
     this.setState({ uname: e.target.value })
@@ -41,13 +42,22 @@ class App extends React.Component {
     Signupfunc(this.state.email, this.state.pass, this.state.uname)
     this.setState({ display: { Signin: true } })
   }
+  handleSignout() {
+    console.log("signout")
+    this.setState({ display: { Signin: true } })
+    Signoutfunc()
+
+  }
   render() {
     return (
       <div className="App">
         <div className="Header">
           {this.state.display.Signin && <button onClick={() => this.setState({ display: { Signup: true } })}>Signup</button>}
           {this.state.display.Signup && <button onClick={() => this.setState({ display: { Signin: true } })}>Signin</button>}
-          {this.state.display.Todoapp && <button onClick={() => this.setState({ display: { Signin: true } })}>Signout</button>}
+          {this.state.display.Todoapp && <button onClick={() => {
+            this.setState({ display: { Signin: true } })
+            Signoutfunc()
+          }}>Signout</button>}
         </div>
         {this.state.display.Signin && <Signin onChangeemail={this.handleonChangeemail} onChangepassword={this.handleonChangepass} onClicksignin={this.handleSignin} />}
         {this.state.display.Signup && <Signup onChangeuname={this.handleonChangeuname} onChangeemail={this.handleonChangeemail} onChangepassword={this.handleonChangepass} onClickSignup={this.handleSignup} />}

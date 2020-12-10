@@ -89,3 +89,10 @@ export function Updatedata (uid,data){
     });
 }
 
+export function Signoutfunc (){
+    firebase.auth().signOut().then(function() {
+       console.log(`sucess`)
+      }).catch(function(error) {
+        // An error happened.
+      });
+}
