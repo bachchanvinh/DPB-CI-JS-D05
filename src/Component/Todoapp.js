@@ -3,14 +3,16 @@ import '../Asset/CSS/Todoapp.css'
 import { Todoheader } from './Todoheader'
 import { Todo } from './Todo'
 import { Todoedit } from './Todoedit'
+import { Updatedata } from '../Controller/Todocontroll'
 
 export class Todoapp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             todoadd: "",
-            datatodo: [`aaasd1`, `aaasd2`, `aaasd3`],
-            valueedit: "asdasd",
+            datatodo: props.datatodo,
+            uid: props.uid,
+            valueedit: "",
             indexedit: 0,
             displayedit: false,
         }
@@ -18,16 +20,14 @@ export class Todoapp extends React.Component {
         this.clickedit = this.clickedit.bind(this)
         this.edittodo = this.edittodo.bind(this)
         this.deletetodo = this.deletetodo.bind(this)
-    }
-    componentDidMount() {
-
-    }
+    }   
     addtodo(e) {
         if (e.key === "Enter") {
             let todos = this.state.datatodo
             todos.push(e.target.value)
             this.setState({ datatodo: todos })
             e.target.value = ""
+            Updatedata(this.state.uid, this.state.datatodo)
         }
     }
     clickedit(indx) {
@@ -35,7 +35,7 @@ export class Todoapp extends React.Component {
             valueedit: this.state.datatodo[indx],
             indexedit: indx,
             displayedit: true,
-            autofocus:true,
+            autofocus: true,
         })
 
     }
@@ -53,21 +53,23 @@ export class Todoapp extends React.Component {
         else if (e.type === 'click' || e.key === "Escape") {
             this.setState({ displayedit: false })
         }
+        Updatedata(this.state.uid, this.state.datatodo)
     }
     deletetodo(indx) {
         let todos = this.state.datatodo
-        todos.splice(indx, 1)// them function firebase sau
+        todos.splice(indx, 1)
         this.setState({ datatodo: todos })
+        Updatedata(this.state.uid, this.state.datatodo)
     }
-    movetoend(e){
-        let temp =e.target.value
-        e.target.value=''
-        e.target.value=temp
+    movetoend(e) {
+        let temp = e.target.value
+        e.target.value = ''
+        e.target.value = temp
     }
     render() {
         return (
             <div className="Todoapp">
-                {this.state.displayedit && <div><div className="Blur" onClick={this.edittodo}></div><Todoedit value={this.state.valueedit} onFocus={this.movetoend}autoFocus={this.state.autofocus} onKeyDown={this.edittodo} onChange={this.edittodo} /></div>}
+                {this.state.displayedit && <div><div className="Blur" onClick={this.edittodo}></div><Todoedit value={this.state.valueedit} onFocus={this.movetoend} autoFocus={this.state.autofocus} onKeyDown={this.edittodo} onChange={this.edittodo} /></div>}
                 <Todoheader onChange={this.addtodo} onKeyDown={this.addtodo} />
                 <div className="Todolist">
                     {this.state.datatodo.map((x, index) => {

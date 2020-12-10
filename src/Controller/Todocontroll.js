@@ -18,20 +18,16 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 export function Signinfunc(email, password) {
-   return firebase.auth().signInWithEmailAndPassword(email, password)
+    return firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
             let uid = user.user.uid
             return uid
-        }).then((uid)=>{
-            return  readData(uid)
+        }).then((uid) => {
+            return readData(uid)
         })
-        // .catch((error) => {
-        //     var errorCode = error.code;
-        //     var errorMessage = error.message;
-        // });
 }
 function readData(uid) {
-    var docRef = db.collection("users").doc(uid);
+    let docRef = db.collection("users").doc(uid);
     return docRef.get().then(function (doc) {
         if (doc.exists) {
             return doc.data()
@@ -45,6 +41,12 @@ function readData(uid) {
 
 }
 
+export function CurentSignin() {
+    let user = firebase.auth().currentUser;
+if (user) {
+  return user
+}
+}
 
 export function Signupfunc(email, password, uname) {
 
@@ -73,3 +75,17 @@ function addData(uid, uname) {
             console.error("Error writing document: ", error);
         });
 }
+
+export function Updatedata (uid,data){
+    let todoref = db.collection("users").doc(`${uid}`);
+    return todoref.update({
+        todos: data
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+    })
+    .catch(function(error) {
+        console.error("Error updating document: ", error);
+    });
+}
+
