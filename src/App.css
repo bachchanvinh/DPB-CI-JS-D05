@@ -1,6 +1,6 @@
 
 .App h1 {
-  font-size:30pt;
+  font-size:50pt;
   text-align: center;
 }
 
@@ -10,6 +10,7 @@
   align-items: center;
 }
 .App .Startbtn {
+  margin-top:2rem;
   height: 3rem;
   width: fit-content;
   font-size: 20pt;
@@ -19,4 +20,6 @@
   display: flex;
   flex-flow:wrap column;
   align-items: flex-start;
+  border: thin black solid;
+  padding:1rem;
 }
